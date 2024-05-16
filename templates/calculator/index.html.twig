@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Simple Calculator</title>
+	</head>
+	<body>
+		<h1>Simple-Dimple Calculator</h1>
+		<form method="post">
+			<input type="number" name="num1" step="any" value="{{ num1|default('') }}" placeholder="Enter first number" required>
+			<select name="operation" required>
+				<option value="add" {% if operation == 'add' %} selected {% endif %}>+</option>
+				<option value="subtract" {% if operation == 'subtract' %} selected {% endif %}>-</option>
+				<option value="multiply" {% if operation == 'multiply' %} selected {% endif %}>*</option>
+				<option value="divide" {% if operation == 'divide' %} selected {% endif %}>/</option>
+			</select>
+			<input type="number" name="num2" step="any" value="{{ num2|default('') }}" placeholder="Enter second number" required>
+			<button type="submit">Calculate</button>
+		</form>
+
+		{% if result is not null %}
+			<h2>Result:
+				{{ result }}</h2>
+		{% endif %}
+	</body>
+</html>
